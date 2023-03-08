@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="CodeShift" />
+    <meta name="description" content="EuroFragrance Catalog Website" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Title -->
+    <title>{{ title }} | EuroFragrance</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'assets/images/favicon.jpg' %}" />
+
+    <!-- Plugins -->
+    <link rel="stylesheet" href="{% static 'assets/vendors/fontawesome-pro-5/css/all.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendors/bootstrap-select/css/bootstrap-select.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendors/slick/slick.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendors/magnific-popup/magnific-popup.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendors/jquery-ui/jquery-ui.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendors/animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendors/mapbox-gl/mapbox-gl.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendors/fonts/font-phosphor/css/phosphor.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendors/fonts/tuesday-night/stylesheet.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendors/fonts/butler/stylesheet.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendors/fonts/a-antara-distance/stylesheet.min.css' %}" />
+
+    <!-- Theme Styles -->
+    <link rel="stylesheet" href="{% static 'assets/css/themes.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="main-header navbar-dark header-sticky header-sticky-smart position-absolute fixed-top">
+      {% if title == 'Home' %}
+      <div class="topbar" style="background-color: #dafaf4">
+        <div class="container">
+          <p class="mb-0 fs-14 font-weight-500 text-secondary text-center text-uppercase">WORLDWIDE SHIPPING • FREE SHIPPING ON ORDERS</p>
+        </div>
+      </div>
+      {% endif %}
+      <div class="sticky-area {% if title == 'Home' %}bg-white{% endif %}">
+        <div class="container container-xxl">
+          <nav class="navbar navbar-expand-xl px-0 d-block">
+            <!-- Desktop Menu -->
+            <div class="d-none d-xl-block">
+              <div class="d-flex align-items-center justify-content-around flex-nowrap">
+                <div>
+                  <ul class="navbar-nav hover-menu main-menu px-0 mx-xl-n5">
+                    <!-- Home -->
+                    <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-pages py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
+                      <a class="nav-link p-0" href="index.html"> Home </a>
+                    </li>
+
+                    <!-- Shop -->
+                    <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-pages py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
+                      <a class="nav-link p-0" href="shop.html"> Shop </a>
+                    </li>
+
+                    <!-- Categories -->
+                    <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-shop dropdown py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
+                      <a class="nav-link dropdown-toggle p-0" href="shop.html" data-toggle="dropdown">
+                        Categories
+                        <span class="caret"></span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-xl px-0 pb-10 pt-5 dropdown-menu-listing overflow-hidden x-animated x-fadeInUp">
+                        <div class="container container-xxl px-xxl-9 d-block">
+                          <div class="row category-list-edit">
+                            <div class="col-xl-2 col-sm-6 mb-md-5">
+                              <h4 class="dropdown-header text-secondary fs-18 mb-1 lh-1">Shop Pages</h4>
+                              <div class="dropdown-item">
+                                <a class="dropdown-link" href="shop-page-01.html"> Shop Layout <sup>V1</sup> </a>
+                              </div>
+                            </div>
+                            <div class="col-xl-2 col-sm-6 mb-md-5">
+                              <h4 class="dropdown-header text-secondary fs-18 mb-1 lh-1">Product Page</h4>
+                              <div class="dropdown-item">
+                                <a class="dropdown-link" href="product-detail-01.html"> Product Detail <sup>V1</sup> </a>
+                              </div>
+                            </div>
+                            <div class="col-xl-2 col-sm-6 mb-md-5">
+                              <h4 class="dropdown-header text-secondary fs-18 mb-1 lh-1">Product Type</h4>
+                              <div class="dropdown-item">
+                                <a class="dropdown-link" href="product-detail-04.html"> Product Simple </a>
+                              </div>
+                            </div>
+                            <div class="col-xl-2 col-sm-6 mb-md-5">
+                              <h4 class="dropdown-header text-secondary fs-18 mb-1 lh-1">Shop Pages</h4>
+                              <div class="dropdown-item">
+                                <a class="dropdown-link" href="shopping-cart.html"> Shopping Cart </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+
+                    <!-- About -->
+                    <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-pages py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
+                      <a class="nav-link p-0" href="about.html"> About </a>
+                    </li>
+
+                    <!-- Contact -->
+                    <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-pages py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
+                      <a class="nav-link p-0" href="contact.html"> Contact </a>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <div class="d-flex mt-3 mt-xl-0 align-items-center w-100 justify-content-center">
+                    <!-- Logo -->
+                    <a class="navbar-brand mx-auto d-inline-block py-0" href="index.html">
+                      <img src="{% static 'assets/images/logo-black.png' %}" alt="EuroFragrance" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Desktop Menu -->
+
+            <!--  Mobile Menu -->
+            <div class="d-flex align-items-center d-xl-none">
+              <!-- Navbar Button -->
+              <button class="navbar-toggler border-0 px-0 canvas-toggle" type="button" data-canvas="true" data-canvas-options='{"width":"250px","container":".sidenav"}'>
+                <span class="fs-24 toggle-icon"></span>
+              </button>
+
+              <!-- Logo -->
+              <a class="navbar-brand d-inline-block mr-0 py-5 mx-auto" href="index.html">
+                <img src="{% static 'assets/images/logo-black.png' %}" alt="EuroFragrance" />
+              </a>
+
+              <!-- Search -->
+              <a href="javascript:void(0);" class="nav-search d-flex align-items-center">
+                <svg class="icon icon-magnifying-glass-light fs-28"></svg>
+              </a>
+            </div>
+            <!-- End Mobile Menu -->
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    {% block content %}{% endblock content %}
+
+    <!-- Footer -->
+    <footer class="pt-10 pt-lg-14 pb-11 footer bg-gray">
+      <div class="container container-xl">
+        <div class="row">
+          <!-- Contact Details -->
+          <div class="col-lg col-md-4 col-12 mb-7 mb-lg-0">
+            <h3 class="fs-20 mb-3">EuroFragrance</h3>
+            <p class="fs-14 lh-185 pr-xl-12">
+              Find a location nearest you. See <a class="font-weight-600" href="https://goo.gl/maps/kpYpgNufEHEPL5Tx6"><u>Our Stores</u></a>
+            </p>
+            <p class="fs-14 lh-185 mb-0">
+              <strong class="text-secondary">+994 55 660 50 15</strong>
+              <br />
+              eurofragrance.company@gmail.com
+            </p>
+          </div>
+
+          <!-- Useful Links -->
+          <div class="col-lg col-md-4 col-12 mb-7 mb-lg-0">
+            <h3 class="fs-20 mb-3">Useful links</h3>
+            <ul class="list-unstyled mb-0">
+              <li class="pb-1"><a href="#" class="text-body lh-175">Home</a></li>
+              <li class="py-1"><a href="#" class="text-body lh-175">Shopping</a></li>
+            </ul>
+          </div>
+
+          <!-- Infomation -->
+          <div class="col-lg col-md-4 col-12 mb-7 mb-lg-0">
+            <h3 class="fs-20 mb-3">Infomation</h3>
+            <ul class="list-unstyled mb-0">
+              <li class="pb-1">
+                <a href="about.html" class="text-body lh-175">About</a>
+              </li>
+
+              <li class="py-1">
+                <a href="contact.html" class="text-body lh-175">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Social -->
+          <div class="col-lg-4 col-12">
+            <div class="col-12 col-lg-4 text-md-center order-1 order-lg-2">
+              <img src="{% static 'assets/images/logo-black-x1.png' %}" alt="EuroFragrance" />
+            </div>
+            <div class="col-12 col-lg-4 text-md-center order-1 order-lg-2">
+              <div class="d-flex flex-column mt-5">
+                <p class="lh-2">© CodeShift</p>
+                <ul class="list-inline fs-18 ml-3 mb-0">
+                  <li class="list-inline-item mr-4">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  </li>
+                  <li class="list-inline-item mr-4">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back To Top -->
+    <div class="position-fixed pos-fixed-bottom-right p-6 z-index-10">
+      <a href="#" class="gtf-back-to-top text-decoration-none bg-white text-primary hover-white bg-hover-primary shadow p-0 w-48px h-48px rounded-circle fs-20 d-flex align-items-center justify-content-center" title="Back To Top"><i class="fal fa-arrow-up"></i></a>
+    </div>
+
+    <!-- Plugins -->
+    <script src="{% static 'assets/vendors/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/jquery-ui/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/bootstrap/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'assets/vendors/bootstrap-select/js/bootstrap-select.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/slick/slick.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/waypoints/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/counter/countUp.js' %}"></script>
+    <script src="{% static 'assets/vendors/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/hc-sticky/hc-sticky.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/jparallax/TweenMax.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/mapbox-gl/mapbox-gl.js' %}"></script>
+    <script src="{% static 'assets/vendors/isotope/isotope.js' %}"></script>
+
+    <!-- Theme Script -->
+    <script src="{% static 'assets/js/theme.js' %}"></script>
+
+    <!-- Mobile Navbar Sidebar -->
+    <div class="sidenav canvas-sidebar bg-white">
+      <div class="canvas-overlay"></div>
+      <div class="pt-5 pb-7 card border-0 h-100">
+        <div class="d-flex align-items-center card-header border-0 py-0 pl-8 pr-7 mb-9 bg-transparent">
+          <!-- Logo -->
+          <a href="index.html" class="d-block w-179px">
+            <img src="{% static 'assets/images/logo-black.png' %}" alt="EuroFragrance" />
+          </a>
+          <span class="canvas-close d-inline-block text-right fs-24 ml-auto lh-1 text-primary"><i class="fal fa-times"></i></span>
+        </div>
+        <div class="overflow-y-auto pb-6 pl-8 pr-7 card-body pt-0">
+          <ul class="navbar-nav main-menu px-0">
+            <!-- Home -->
+            <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-pages py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
+              <a class="nav-link p-0" href="index.html"> Home </a>
+            </li>
+
+            <!-- Shop -->
+            <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-pages py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
+              <a class="nav-link p-0" href="shop.html"> Shop </a>
+            </li>
+
+            <!-- Categories -->
+            <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
+              <a class="nav-link dropdown-toggle p-0" href="shop.html" data-toggle="dropdown">
+                Categories
+                <span class="caret"></span>
+              </a>
+              <div class="dropdown-menu p-0 dropdown-menu-listing x-animated x-fadeInUp">
+                <h4 class="dropdown-header text-secondary fs-16 my-3">Shop Pages</h4>
+
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="shop-page-01.html"> Shop Layout <sup>V1</sup> </a>
+                </div>
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="shop-page-02.html"> Shop Layout <sup>V2</sup> </a>
+                </div>
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="shop-page-03.html"> Shop Layout <sup>V3</sup> </a>
+                </div>
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="shop-page.html"> Shop Layout <sup>V4</sup> </a>
+                </div>
+
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="shop-page-05.html"> Shop Layout <sup>V5</sup> </a>
+                </div>
+
+                <h4 class="dropdown-header text-secondary fs-16 my-3">Product Page</h4>
+
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="product-details.html"> Product Detail <sup>V1</sup> </a>
+                </div>
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="product-detail-02.html"> Product Detail <sup>V2</sup> </a>
+                </div>
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="product-detail-03.html"> Product Detail <sup>V3</sup> </a>
+                </div>
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="product-detail-04.html"> Product Detail <sup>V4</sup> </a>
+                </div>
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="product-detail-05.html"> Product Detail <sup>V5</sup> </a>
+                </div>
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="product-detail-06.html"> Product Detail <sup>V6</sup> </a>
+                </div>
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="product-detail-07.html"> Product Detail <sup>V7</sup> </a>
+                </div>
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="product-detail-08.html"> Product Detail <sup>V8</sup> </a>
+                </div>
+
+                <h4 class="dropdown-header text-secondary fs-16 my-3">Product Type</h4>
+
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="product-detail-04.html"> Product Simple </a>
+                </div>
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="product-detail-05.html"> Product Variable </a>
+                </div>
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="product-detail-06.html"> Product Time Limit </a>
+                </div>
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="product-detail-08.html"> Product Grouped </a>
+                </div>
+                <h4 class="dropdown-header text-secondary fs-16 my-3">Shop Page</h4>
+
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="shopping-cart.html"> Shopping Cart </a>
+                </div>
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="compare.html"> Compare </a>
+                </div>
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="wishlist.html"> Wishlist </a>
+                </div>
+                <div class="dropdown-item">
+                  <a class="dropdown-link" href="checkout.html"> Checkout </a>
+                </div>
+              </div>
+            </li>
+
+            <!-- About -->
+            <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-pages py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
+              <a class="nav-link p-0" href="about.html"> About </a>
+            </li>
+
+            <!-- Contact -->
+            <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-pages py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
+              <a class="nav-link p-0" href="contact.html"> Contact </a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer bg-transparent border-0 mt-auto pl-8 pr-7 pb-0 pt-4">
+          <ul class="list-inline d-flex align-items-center mb-3">
+            <li class="list-inline-item mr-4">
+              <a href="#" class="fs-20 lh-1"><i class="fab fa-facebook-f"></i></a>
+            </li>
+            <li class="list-inline-item mr-4">
+              <a href="#" class="fs-20 lh-1"><i class="fab fa-instagram"></i></a>
+            </li>
+          </ul>
+          <p class="mb-0 text-gray">
+            © {% now "Y" %} CodeShift.<br />
+            All rights reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
