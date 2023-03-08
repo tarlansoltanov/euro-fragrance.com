@@ -1,13 +1,15 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="author" content="CodeShift" />
-    <meta name="description" content="EuroFragrance Catalog Website" />
+    <meta name="description" content="{{ settings.company_name }} Catalog Website" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- Title -->
-    <title>{{ title }} | EuroFragrance</title>
+    <title>{{ title }} | {{ settings.company_name }}</title>
 
     <!-- Favicon -->
     <link rel="icon" href="{% static 'assets/images/favicon.jpg' %}" />
@@ -36,13 +38,19 @@
     <!-- Header -->
     <header class="main-header navbar-dark header-sticky header-sticky-smart position-absolute fixed-top">
       {% if title == 'Home' %}
-      <div class="topbar" style="background-color: #dafaf4">
-        <div class="container">
-          <p class="mb-0 fs-14 font-weight-500 text-secondary text-center text-uppercase">WORLDWIDE SHIPPING • FREE SHIPPING ON ORDERS</p>
+        <div class="topbar" style="background-color: #dafaf4">
+          <div class="container">
+            <p class="mb-0 fs-14 font-weight-500 text-secondary text-center text-uppercase">{{ settings.advert }}</p>
+          </div>
         </div>
-      </div>
+      {% else %}
+        <div class="topbar bg-primary">
+          <div class="container">
+            <p class="mb-0 fs-14 font-weight-600 text-white text-cente text-uppercaser">{{ settings.advert }}</p>
+          </div>
+        </div>
       {% endif %}
-      <div class="sticky-area {% if title == 'Home' %}bg-white{% endif %}">
+      <div class="sticky-area {% if title != 'Home' %}bg-white{% endif %}">
         <div class="container container-xxl">
           <nav class="navbar navbar-expand-xl px-0 d-block">
             <!-- Desktop Menu -->
@@ -113,7 +121,7 @@
                   <div class="d-flex mt-3 mt-xl-0 align-items-center w-100 justify-content-center">
                     <!-- Logo -->
                     <a class="navbar-brand mx-auto d-inline-block py-0" href="index.html">
-                      <img src="{% static 'assets/images/logo-black.png' %}" alt="EuroFragrance" />
+                      <img src="{% static 'assets/images/logo-black.png' %}" alt="{{ settings.company_name }}" />
                     </a>
                   </div>
                 </div>
@@ -130,7 +138,7 @@
 
               <!-- Logo -->
               <a class="navbar-brand d-inline-block mr-0 py-5 mx-auto" href="index.html">
-                <img src="{% static 'assets/images/logo-black.png' %}" alt="EuroFragrance" />
+                <img src="{% static 'assets/images/logo-black.png' %}" alt="{{ settings.company_name }}" />
               </a>
 
               <!-- Search -->
@@ -152,14 +160,14 @@
         <div class="row">
           <!-- Contact Details -->
           <div class="col-lg col-md-4 col-12 mb-7 mb-lg-0">
-            <h3 class="fs-20 mb-3">EuroFragrance</h3>
+            <h3 class="fs-20 mb-3">{{ settings.company_name }}</h3>
             <p class="fs-14 lh-185 pr-xl-12">
-              Find a location nearest you. See <a class="font-weight-600" href="https://goo.gl/maps/kpYpgNufEHEPL5Tx6"><u>Our Stores</u></a>
+              Find a location nearest you. <br> See <a class="font-weight-600" href="{{ settings.address_url }}"><u>Our Stores</u></a>
             </p>
             <p class="fs-14 lh-185 mb-0">
-              <strong class="text-secondary">+994 55 660 50 15</strong>
+              <strong class="text-secondary">{{ settings.phone }}</strong>
               <br />
-              eurofragrance.company@gmail.com
+              {{ settings.email }}
             </p>
           </div>
 
@@ -189,7 +197,7 @@
           <!-- Social -->
           <div class="col-lg-4 col-12">
             <div class="col-12 col-lg-4 text-md-center order-1 order-lg-2">
-              <img src="{% static 'assets/images/logo-black-x1.png' %}" alt="EuroFragrance" />
+              <img src="{% static 'assets/images/logo-black-x1.png' %}" alt="{{ settings.company_name }}" />
             </div>
             <div class="col-12 col-lg-4 text-md-center order-1 order-lg-2">
               <div class="d-flex flex-column mt-5">
@@ -238,7 +246,7 @@
         <div class="d-flex align-items-center card-header border-0 py-0 pl-8 pr-7 mb-9 bg-transparent">
           <!-- Logo -->
           <a href="index.html" class="d-block w-179px">
-            <img src="{% static 'assets/images/logo-black.png' %}" alt="EuroFragrance" />
+            <img src="{% static 'assets/images/logo-black.png' %}" alt="{{ settings.company_name }}" />
           </a>
           <span class="canvas-close d-inline-block text-right fs-24 ml-auto lh-1 text-primary"><i class="fal fa-times"></i></span>
         </div>
