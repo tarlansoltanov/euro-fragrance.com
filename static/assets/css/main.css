@@ -1,0 +1,43 @@
+/* Shoping page edit */
+.shopping-image {
+    width: 330px;
+    height: 440px;
+    object-fit: cover;
+    object-position: center;
+}
+.shopping-image-1 {
+    width: 450px;
+    height: 600px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.modal-image {
+    width: 450px;
+    height: 600px;
+    object-fit: cover;
+    object-position: center;
+}
+.modal-image-footer {
+    width: 82px;
+    height: 110px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.category-list-edit{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+@media(max-width:768px) {
+    .shopping-image-xl {
+        width: 530px;
+        height: 440px;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+
