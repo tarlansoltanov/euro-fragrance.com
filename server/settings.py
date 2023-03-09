@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # Local apps
     'server.apps.base.apps.BaseConfig',
+    'server.apps.products.apps.ProductsConfig',
 
     # Django apps
     'django.contrib.admin',
