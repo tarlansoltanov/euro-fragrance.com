@@ -28,3 +28,8 @@ class CategoryAdmin(admin.ModelAdmin):
         return obj.main.name if obj.main else None
     
     main.short_description = "Main"
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "main":
+            kwargs["queryset"] = Category.objects.filter(main=None)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
