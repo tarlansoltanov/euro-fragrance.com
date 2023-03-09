@@ -60,7 +60,7 @@
                   <ul class="navbar-nav hover-menu main-menu px-0 mx-xl-n5">
                     <!-- Home -->
                     <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-pages py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                      <a class="nav-link p-0" href="index.html"> Home </a>
+                      <a class="nav-link p-0" href="{% url 'base:home' %}"> Home </a>
                     </li>
 
                     <!-- Shop -->
@@ -120,7 +120,7 @@
                 <div>
                   <div class="d-flex mt-3 mt-xl-0 align-items-center w-100 justify-content-center">
                     <!-- Logo -->
-                    <a class="navbar-brand mx-auto d-inline-block py-0" href="index.html">
+                    <a class="navbar-brand mx-auto d-inline-block py-0" href="{% url 'base:home' %}">
                       <img src="{% static 'assets/images/logo-black.png' %}" alt="{{ settings.company_name }}" />
                     </a>
                   </div>
@@ -137,7 +137,7 @@
               </button>
 
               <!-- Logo -->
-              <a class="navbar-brand d-inline-block mr-0 py-5 mx-auto" href="index.html">
+              <a class="navbar-brand d-inline-block mr-0 py-5 mx-auto" href="{% url 'base:home' %}">
                 <img src="{% static 'assets/images/logo-black.png' %}" alt="{{ settings.company_name }}" />
               </a>
 
@@ -245,7 +245,7 @@
       <div class="pt-5 pb-7 card border-0 h-100">
         <div class="d-flex align-items-center card-header border-0 py-0 pl-8 pr-7 mb-9 bg-transparent">
           <!-- Logo -->
-          <a href="index.html" class="d-block w-179px">
+          <a href="{% url 'base:home' %}" class="d-block w-179px">
             <img src="{% static 'assets/images/logo-black.png' %}" alt="{{ settings.company_name }}" />
           </a>
           <span class="canvas-close d-inline-block text-right fs-24 ml-auto lh-1 text-primary"><i class="fal fa-times"></i></span>
@@ -254,7 +254,7 @@
           <ul class="navbar-nav main-menu px-0">
             <!-- Home -->
             <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-pages py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-              <a class="nav-link p-0" href="index.html"> Home </a>
+              <a class="nav-link p-0" href="{% url 'base:home' %}"> Home </a>
             </li>
 
             <!-- Shop -->
