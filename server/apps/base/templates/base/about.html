@@ -1,0 +1,61 @@
+{% extends 'base/layout.html' %}
+
+{% load static %}
+
+{% block content %}
+<!-- Main -->
+<main id="content">
+  <!-- Title -->
+  <section class="pt-lg-18 pb-lg-17 py-14 bg-img-cover-center" style="background-image: url('{% static 'assets/images/about/introducing.jpg' %}')">
+    <div class="container pt-lg-8 pb-lg-7">
+      <p class="text-secondary mb-5 text-uppercase font-weight-600 letter-spacing-015" data-animate="fadeInUp">Introducing</p>
+      <h1 class="fs-44 fs-lg-56 lh-121" data-animate="fadeInUp">About {{ settings.company_name }}</h1>
+    </div>
+  </section>
+  <!-- Main Section -->
+  <section class="pb-9 pt-7 pt-lg-12 pb-lg-15">
+    <div class="container">
+      <!-- We Strive -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card bg-transparent border-0 text-center">
+            <div class="w-63px card-img" data-animate="fadeInUp">
+              <img src="{% static 'assets/images/about/image-box-01.jpg' %}" alt="" />
+            </div>
+            <div class="card-body px-0 pb-10 pb-lg-12 pt-1">
+              <h3 class="card-title fs-34 lh-129 mb-5 mx-auto" style="max-width: 610px" data-animate="fadeInUp">We strive to live with compassion, kindness and empathy</h3>
+              <p class="cart-text mb-0 mx-auto" style="max-width: 670px" data-animate="fadeInUp">A lot of so-called stretch denim pants out there are just glorified sweatpants – they get baggy and lose their shape. Not cool. Our tightly knitted fabric holds its form after repeated wear. Plus, Aldays dress up or down, no prob. So you can wear them all day. Get it?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Healthy -->
+      <div class="row align-items-center mb-9 mb-lg-13">
+        <div class="col-12 col-lg-6 pr-lg-0">
+          <div class="hover-shine hover-zoom-in" data-animate="fadeInUp">
+            <img class="w-100" src="{% static 'assets/images/about/banner-01.jpg' %}" alt="Give your skin a healthy glow everyone" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 pl-lg-13 mt-lg-0 mt-8">
+          <h3 class="mr-lg-10 mb-5" data-animate="fadeInUp">Give your skin a healthy {{ settings.company_name }} everyone</h3>
+          <p class="mr-lg-10" data-animate="fadeInUp">{{ settings.company_name }}, which aims to improve the quality of life with effective and high-quality products produced according to international standards, continues its activities with products that increase the quality of life of consumers. has reached a market. In modern facilities, using sonyi, we design products with natural plant extracts and vegetable oils, and produce them in accordance with rules and standards in hygienic environments. We started in 2013 in a small office. We set out with the idea of what we can do to improve the quality of life of our family with natural products and for a healthy life.</p>
+        </div>
+      </div>
+
+      <!-- Our Mission -->
+      <div class="row align-items-center">
+        <div class="col-12 col-lg-6 pl-lg-13 mt-lg-0 mt-8 order-lg-1 order-2">
+          <h3 class="mr-lg-10" data-animate="fadeInUp">Our mission</h3>
+          <p class="mr-lg-10" data-animate="fadeInUp">We became a manufacturer to share our experience and bring high-quality natural products to you. First, personal care and perfume products were added to our catalog, and then cosmetic products. Today, we are a team working hard to present you the best and to develop our product inventory. Our mission is to create awareness of personal care, to design and produce products aimed at consumer needs. To deliver our products to Turkey and the world; Our vision is to make a healthy, low-maintenance piece. Why Us? We are a team dedicated to health. We are a team that believes in the health and quality of life benefits of natural products. We are a team that believes that natural and organic products are safer and more effective than shipped products that are not found in nature.</p>
+        </div>
+        <div class="col-12 col-lg-6 pl-lg-0 order-lg-2 order-1">
+          <div class="hover-shine hover-zoom-in" data-animate="fadeInUp">
+            <img class="w-100" src="{% static 'assets/images/about/banner-02.jpg' %}" alt="Our mission" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock content %}

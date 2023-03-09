@@ -36,7 +36,7 @@
   </head>
   <body>
     <!-- Header -->
-    <header class="main-header navbar-dark header-sticky header-sticky-smart position-absolute fixed-top">
+    <header class="main-header navbar-light header-sticky header-sticky-smart {% if title == 'Home' %}navbar-dark position-absolute fixed-top{% endif %}">
       {% if title == 'Home' %}
         <div class="topbar" style="background-color: #dafaf4">
           <div class="container">
@@ -46,7 +46,7 @@
       {% else %}
         <div class="topbar bg-primary">
           <div class="container">
-            <p class="mb-0 fs-14 font-weight-600 text-white text-cente text-uppercaser">{{ settings.advert }}</p>
+            <p class="mb-0 fs-14 font-weight-600 text-white text-center text-uppercase">{{ settings.advert }}</p>
           </div>
         </div>
       {% endif %}
@@ -108,7 +108,7 @@
 
                     <!-- About -->
                     <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-pages py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                      <a class="nav-link p-0" href="about.html"> About </a>
+                      <a class="nav-link p-0" href="{% url 'base:about' %}"> About </a>
                     </li>
 
                     <!-- Contact -->
@@ -185,7 +185,7 @@
             <h3 class="fs-20 mb-3">Infomation</h3>
             <ul class="list-unstyled mb-0">
               <li class="pb-1">
-                <a href="about.html" class="text-body lh-175">About</a>
+                <a href="{% url 'base:about' %}" class="text-body lh-175">About</a>
               </li>
 
               <li class="py-1">
@@ -348,7 +348,7 @@
 
             <!-- About -->
             <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-pages py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-              <a class="nav-link p-0" href="about.html"> About </a>
+              <a class="nav-link p-0" href="{% url 'base:about' %}"> About </a>
             </li>
 
             <!-- Contact -->
