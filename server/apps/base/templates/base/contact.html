@@ -1,0 +1,109 @@
+{% extends 'base/layout.html' %}
+
+{% load static %}
+
+
+{% block content %}
+<!-- Main -->
+<main class="mb-13" id="content">
+  <!-- Breadcrumb -->
+  <section class="py-2 bg-gray-2">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-site py-0 d-flex justify-content-center">
+          <li class="breadcrumb-item"><a class="text-decoration-none text-body" href="{% url 'base:home' %}">Home</a></li>
+          <li class="breadcrumb-item active pl-0 d-flex align-items-center" aria-current="page">Contact Us</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="pt-9">
+    <div class="container">
+      <h2 class="text-center mb-6" data-animate="fadeInUp">Keep In Touch with Us</h2>
+      <p class="text-center mb-9 mx-auto fs-18" style="max-width: 590px" data-animate="fadeInUp">We’re talking about clean beauty gift sets, of course – and we’ve got a bouquet of beauties for yourself or someone you love.</p>
+      <div class="row">
+        <!-- Address -->
+        <div class="col-md-4 mb-md-0 mb-8" data-animate="fadeInUp">
+          <div class="media">
+            <div class="icon pr-lg-6 pr-5">
+              <svg class="icon icon-box-07 fs-40 text-primary">
+                <use xlink:href="#icon-box-07"></use>
+              </svg>
+            </div>
+            <div class="media-body">
+              <h3 class="fs-20 mb-3">Address</h3>
+              <p class="fs-16 mb-2">
+                {{ settings.address }}
+              </p>
+
+              <a href="{{ settings.address_url }}" class="btn btn-link p-0 border-bottom border-0 border-secondary rounded-0">Get Direction</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="col-md-4 mb-md-0 mb-8" data-animate="fadeInUp">
+          <div class="media">
+            <div class="icon pr-lg-6 pr-5">
+              <svg class="icon icon-box-05 fs-40 text-primary">
+                <use xlink:href="#icon-box-05"></use>
+              </svg>
+            </div>
+            <div class="media-body">
+              <h3 class="fs-20 mb-3">Contact</h3>
+              <p class="mb-1 fs-16">Mobile:<span class="text-secondary"> {{ settings.phone }}</span></p>
+
+              <p class="mb-0 fs-16">{{ settings.email }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hour of operation -->
+        <div class="col-md-4 mb-md-0 mb-8" data-animate="fadeInUp">
+          <div class="media">
+            <div class="icon pr-lg-6 pr-5">
+              <svg class="icon icon-box-06 fs-40 text-primary">
+                <use xlink:href="#icon-box-06"></use>
+              </svg>
+            </div>
+            <div class="media-body">
+              <h3 class="fs-20 mb-3">Hour of operation</h3>
+              <dl class="d-flex mb-0">
+                <dt class="pr-1 fs-16 text-secondary font-weight-500" style="width: 110px">Mon – Fri:</dt>
+                <dd class="mb-0">08:30 – 20:00</dd>
+              </dl>
+              <dl class="d-flex mb-0">
+                <dt class="pr-1 fs-16 text-secondary font-weight-500" style="width: 110px">Sat & Sun:</dt>
+                <dd class="mb-0">09:30 – 21:30</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock content %}
+
+
+{% block icons %}
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <symbol id="icon-box-05" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.6" d="M19.927 5c1.695 0.456 3.241 1.349 4.482 2.591s2.135 2.787 2.591 4.482"></path>
+      <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.6" d="M18.892 8.865c1.017 0.274 1.945 0.81 2.689 1.554s1.281 1.672 1.554 2.689"></path>
+      <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.6" d="M11.56 15.602c1.037 2.121 2.756 3.832 4.882 4.859 0.156 0.074 0.328 0.106 0.499 0.093s0.337-0.070 0.479-0.167l3.13-2.087c0.138-0.092 0.298-0.149 0.463-0.164s0.332 0.011 0.485 0.077l5.855 2.509c0.199 0.084 0.365 0.231 0.473 0.418s0.153 0.404 0.127 0.619c-0.185 1.448-0.892 2.779-1.987 3.744s-2.505 1.497-3.965 1.497c-4.509 0-8.833-1.791-12.021-4.979s-4.979-7.512-4.979-12.021c0-1.46 0.532-2.87 1.497-3.965s2.296-1.802 3.744-1.987c0.214-0.026 0.432 0.019 0.619 0.127s0.334 0.274 0.418 0.473l2.511 5.86c0.065 0.152 0.091 0.317 0.077 0.481s-0.069 0.322-0.16 0.46l-2.080 3.178c-0.095 0.143-0.151 0.308-0.162 0.479s0.021 0.342 0.095 0.497v0z"></path>
+    </symbol>
+    <symbol id="icon-box-06" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" stroke-width="1.6" d="M16 28c6.627 0 12-5.373 12-12s-5.373-12-12-12c-6.627 0-12 5.373-12 12s5.373 12 12 12z"></path>
+      <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.6" d="M16 9v7h7"></path>
+    </symbol>
+    <symbol id="icon-box-07" viewBox="0 0 32 32">
+      <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.6" d="M16 17c2.209 0 4-1.791 4-4s-1.791-4-4-4c-2.209 0-4 1.791-4 4s1.791 4 4 4z"></path>
+      <path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.6" d="M26 13c0 9-10 16-10 16s-10-7-10-16c0-2.652 1.054-5.196 2.929-7.071s4.419-2.929 7.071-2.929 5.196 1.054 7.071 2.929c1.875 1.875 2.929 4.419 2.929 7.071v0z"></path>
+    </symbol>
+  </defs>
+</svg>
+{% endblock icons %}
