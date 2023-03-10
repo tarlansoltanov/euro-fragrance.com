@@ -19,6 +19,11 @@ class Product(models.Model):
         """Unicode representation of Product."""
         return self.name
     
+    @property
+    def image(self):
+        if self.images.exists():
+            return self.images.first().image
+    
 
 class ProductImage(models.Model):
     """Model definition for ProductImage."""
@@ -35,6 +40,10 @@ class ProductImage(models.Model):
     def __str__(self):
         """Unicode representation of ProductImage."""
         return f"{self.product.name} - {self.image.name}"
+    
+    @property
+    def url(self):
+        return self.image.url
 
 
 class Category(models.Model):

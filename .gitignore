@@ -26,3 +26,6 @@ ENV/
 
 # StaticFiles
 staticfiles/
+
+# Media
+media/

@@ -65,12 +65,12 @@
 
                     <!-- Shop -->
                     <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-pages py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                      <a class="nav-link p-0" href="shop.html"> Shop </a>
+                      <a class="nav-link p-0" href="{% url 'products:shop' %}"> Shop </a>
                     </li>
 
                     <!-- Categories -->
                     <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-shop dropdown py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                      <a class="nav-link dropdown-toggle p-0" href="shop.html" data-toggle="dropdown">
+                      <a class="nav-link dropdown-toggle p-0" href="{% url 'products:shop' %}" data-toggle="dropdown">
                         Categories
                         <span class="caret"></span>
                       </a>
@@ -175,8 +175,13 @@
           <div class="col-lg col-md-4 col-12 mb-7 mb-lg-0">
             <h3 class="fs-20 mb-3">Useful links</h3>
             <ul class="list-unstyled mb-0">
-              <li class="pb-1"><a href="#" class="text-body lh-175">Home</a></li>
-              <li class="py-1"><a href="#" class="text-body lh-175">Shopping</a></li>
+              <li class="pb-1">
+                <a href="{% url 'base:home' %}" class="text-body lh-175">Home</a>
+              </li>
+              
+              <li class="py-1">
+                <a href="{% url 'products:shop' %}" class="text-body lh-175">Shopping</a>
+              </li>
             </ul>
           </div>
 
@@ -259,12 +264,12 @@
 
             <!-- Shop -->
             <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-pages py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-              <a class="nav-link p-0" href="shop.html"> Shop </a>
+              <a class="nav-link p-0" href="{% url 'products:shop' %}"> Shop </a>
             </li>
 
             <!-- Categories -->
             <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
-              <a class="nav-link dropdown-toggle p-0" href="shop.html" data-toggle="dropdown">
+              <a class="nav-link dropdown-toggle p-0" href="{% url 'products:shop' %}" data-toggle="dropdown">
                 Categories
                 <span class="caret"></span>
               </a>
@@ -376,5 +381,8 @@
 
     <!-- Icons -->
     {% block icons %}{% endblock icons %}
+    
+    <!-- Modals -->
+    {% block modals %}{% endblock modals %}
   </body>
 </html>
