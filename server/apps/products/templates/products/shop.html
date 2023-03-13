@@ -44,7 +44,7 @@
                       </svg>
                     </a>
                     <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view" class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
-                      <span data-toggle="modal" data-target="#quick-view">
+                      <span data-toggle="modal" data-target="#quick-view-{{ item.id }}">
                         <svg class="icon icon-eye-light fs-24">
                           <use xlink:href="#icon-eye-light"></use>
                         </svg>
@@ -116,104 +116,70 @@
 {% endblock icons %}
 
 {% block modals %}
-<!-- Quick View Modal -->
-<div class="modal fade quick-view" id="quick-view" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header border-0 py-0">
-        <button type="button" class="close fs-32" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body pt-0">
-        <div class="row">
-          <!-- Product Images -->
-          <div class="col-md-6 pr-xl-5 mb-8 mb-md-0 pl-xl-8">
-            <div class="galleries-product product galleries-product-02 position-relative">
-              <div class="position-absolute pos-fixed-top-right z-index-2">
-                <div class="content-change-vertical"></div>
-              </div>
 
-              <div class="view-slider-for mx-0">
-                <!-- Image -->
-                <div class="box px-0">
-                  <div class="card p-0 rounded-0 border-0">
-                    <a href="assets/images/product/product-07.jpg" class="card-img">
-                      <img class="modal-image" src="https://cdn.shopify.com/s/files/1/0253/5954/8497/products/3348901250153_1_450x.jpg?v=1673575951" alt="product gallery" />
-                    </a>
+{% for item in page %}  
+  <!-- Quick View Modal -->
+  <div class="modal fade quick-view" id="quick-view-{{ item.id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header border-0 py-0">
+          <button type="button" class="close fs-32" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body pt-0">
+          <div class="row">
+            <!-- Product Images -->
+            <div class="col-md-6 pr-xl-5 mb-8 mb-md-0 pl-xl-8">
+              <div class="galleries-product product galleries-product-02 position-relative">
+                <div class="position-absolute pos-fixed-top-right z-index-2">
+                  <div class="content-change-vertical"></div>
+                </div>
+
+                <div class="view-slider-for mx-0">
+                  {% for image in item.images.all %}
+                  <!-- Image -->
+                  <div class="box px-0">
+                    <div class="card p-0 rounded-0 border-0">
+                      <a href="{{ image.url }}" class="card-img">
+                        <img class="modal-image" src="{{ image.url }}" alt="{{ item.name }}" />
+                      </a>
+                    </div>
                   </div>
+                  {% endfor %}
                 </div>
 
-                <!-- Image -->
-                <div class="box px-0">
-                  <div class="card p-0 rounded-0 border-0">
-                    <a href="assets/images/product/product-15.jpg" class="card-img">
-                      <img class="modal-image" src="assets/images/product/product-15.jpg" alt="product gallery" />
-                    </a>
-                  </div>
-                </div>
-
-                <!-- Image -->
-                <div class="box px-0">
-                  <div class="card p-0 rounded-0 border-0">
-                    <a href="assets/images/product/product-16.jpg" class="card-img">
-                      <img class="modal-image" src="assets/images/product/product-16.jpg" alt="product gallery" />
-                    </a>
-                  </div>
-                </div>
-
-                <!-- Image -->
-                <div class="box px-0">
-                  <div class="card p-0 rounded-0 border-0">
-                    <a href="assets/images/product/product-17.jpg" class="card-img">
-                      <img class="modal-image" src="assets/images/product/product-17.jpg" alt="product gallery" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="view-slider-nav mx-n1">
-                <!-- Image -->
-                <div class="box py-4 px-1 cursor-pointer">
-                  <img class="modal-image-footer" src="https://cdn.shopify.com/s/files/1/0253/5954/8497/products/3348901250153_1_450x.jpg?v=1673575951" alt="product gallery" />
-                </div>
-
-                <!-- Image -->
-                <div class="box py-4 px-1 cursor-pointer">
-                  <img class="modal-image-footer" src="assets/images/product/product-15.jpg" alt="product gallery" />
-                </div>
-
-                <!-- Image -->
-                <div class="box py-4 px-1 cursor-pointer">
-                  <img class="modal-image-footer" src="assets/images/product/product-16.jpg" alt="product gallery" />
-                </div>
-
-                <!-- Image -->
-                <div class="box py-4 px-1 cursor-pointer">
-                  <img class="modal-image-footer" src="assets/images/product/product-17.jpg" alt="product gallery" />
+                <div class="view-slider-nav mx-n1">
+                  {% for image in item.images.all %}
+                    <!-- Image -->
+                    <div class="box py-4 px-1 cursor-pointer">
+                      <img class="modal-image-footer" src="{{ image.url }}" alt="{{ item.name }}" />
+                    </div>
+                  {% endfor %}
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Product info -->
-          <div class="col-md-6 pl-xl-6 pr-xl-8">
-            <p class="d-flex align-items-center">
-              <span class="fs-18 text-secondary font-weight-bold ml-3">$29.00</span>
-            </p>
-            <h2 class="fs-24 mb-2">Natural Coconut Cleansing Oil</h2>
-            <p class="mb-4 mr-xl-6">Niacinamide and Vitamin C are two anti-aging superstars but not usually formulated together because of their different pH levels.</p>
-            <p class="mb-2"></p>
-            <ul class="list-unstyled border-top pt-5 mt-5">
-              <li class="row mb-2">
-                <span class="d-block col-4 col-lg-2 text-secondary font-weight-600 fs-14">Categories:</span>
-                <span class="d-block col-8 col-lg-10 fs-14">Makeup, Skincare</span>
-              </li>
-            </ul>
+            <!-- Product info -->
+            <div class="col-md-6 pl-xl-6 pr-xl-8">
+              <p class="d-flex align-items-center">
+                <span class="fs-18 text-secondary font-weight-bold">${{ item.price }}</span>
+              </p>
+              <h2 class="fs-24 mb-2">{{ item.name }}</h2>
+              <p class="mb-4 mr-xl-6">{{ item.description }}</p>
+              <p class="mb-2"></p>
+              <ul class="list-unstyled border-top pt-5 mt-5">
+                <li class="row mb-2">
+                  <span class="d-block col-4 col-lg-2 text-secondary font-weight-600 fs-14">Categories:</span>
+                  <span class="d-block col-8 col-lg-10 fs-14">{{ item.get_categories }}</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+{% endfor %}
+
 {% endblock modals %}
