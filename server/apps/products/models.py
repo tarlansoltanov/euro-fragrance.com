@@ -21,8 +21,11 @@ class Product(models.Model):
     
     @property
     def image(self):
-        if self.images.exists():
-            return self.images.first().image
+        return self.images.first().image if self.images.exists() else None
+    
+    @property
+    def get_categories(self):
+        return ", ".join([c.name for c in self.categories.all()])
     
 
 class ProductImage(models.Model):

@@ -5,4 +5,5 @@ app_name = 'server.apps.products'
 
 urlpatterns = [
     path('', views.shop, name='shop'),
+    path('product/<int:pk>/', views.product, name='product'),
 ]
