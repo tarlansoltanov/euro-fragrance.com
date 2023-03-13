@@ -87,138 +87,42 @@
     <div class="container">
       <h3 class="text-center fs-34 mb-8">You May Also Like</h3>
       <div class="slick-slider mx-n2" data-slick-options='{"slidesToShow": 4,"dots":false,"arrows":false,"responsive":[{"breakpoint": 1368,"settings": {"arrows":false,"dots":true}},{"breakpoint": 1200,"settings": {"slidesToShow":3,"arrows":false,"dots":true}},{"breakpoint": 992,"settings": {"slidesToShow":2,"arrows":false,"dots":true}},{"breakpoint": 768,"settings": {"slidesToShow": 2,"arrows":false,"dots":true}},{"breakpoint": 576,"settings": {"slidesToShow": 1,"arrows":false,"dots":true}}]}'>
-        <!-- Product -->
-        <div class="box">
-          <div class="card border-0 product">
-            <div class="position-relative">
-              <img class="shopping-image shopping-image-xl" src="https://cdn.shopify.com/s/files/1/0253/5954/8497/products/3348901250153_1_450x.jpg?v=1673575951" alt="Facial cleanser" />
-              <div class="card-img-overlay d-flex p-3">
-                <div></div>
-                <div class="my-auto w-100 content-change-vertical">
-                  <a href="product-details.html" data-toggle="tooltip" data-placement="left" title="View products" class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                    <svg class="icon icon-shopping-bag-open-light fs-24">
-                      <use xlink:href="#icon-shopping-bag-open-light"></use>
-                    </svg>
-                  </a>
-                  <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view" class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
-                    <span data-toggle="modal" data-target="#quick-view">
-                      <svg class="icon icon-eye-light fs-24">
-                        <use xlink:href="#icon-eye-light"></use>
+        
+        {% for item in products %}
+          
+          <!-- Product -->
+          <div class="box">
+            <div class="card border-0 product">
+              <div class="position-relative">
+                <img class="shopping-image shopping-image-xl" src="{{ item.image.url }}" alt="{{ item.name }}" />
+                <div class="card-img-overlay d-flex p-3">
+                  <div></div>
+                  <div class="my-auto w-100 content-change-vertical">
+                    <a href="{% url 'products:product' pk=item.id %}" data-toggle="tooltip" data-placement="left" title="View products" class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
+                      <svg class="icon icon-shopping-bag-open-light fs-24">
+                        <use xlink:href="#icon-shopping-bag-open-light"></use>
                       </svg>
-                    </span>
-                  </a>
+                    </a>
+                    <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view" class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
+                      <span data-toggle="modal" data-target="#quick-view">
+                        <svg class="icon icon-eye-light fs-24">
+                          <use xlink:href="#icon-eye-light"></use>
+                        </svg>
+                      </span>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="card-body pt-4 text-center">
-              <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
-                <span>$29.00</span>
-              </p>
-              <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-details.html">Facial cleanser</a></h2>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product -->
-        <div class="box">
-          <div class="card border-0 product">
-            <div class="position-relative">
-              <img class="shopping-image shopping-image-xl" src="assets/images/product/product-04.jpg" alt="Bio-shroom Rejuvenating Serum" />
-              <div class="card-img-overlay d-flex p-3">
-                <div></div>
-                <div class="my-auto w-100 content-change-vertical">
-                  <a href="product-details.html" data-toggle="tooltip" data-placement="left" title="View products" class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                    <svg class="icon icon-shopping-bag-open-light fs-24">
-                      <use xlink:href="#icon-shopping-bag-open-light"></use>
-                    </svg>
-                  </a>
-                  <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view" class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
-                    <span data-toggle="modal" data-target="#quick-view">
-                      <svg class="icon icon-eye-light fs-24">
-                        <use xlink:href="#icon-eye-light"></use>
-                      </svg>
-                    </span>
-                  </a>
-                </div>
+              <div class="card-body pt-4 text-center">
+                <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
+                  <span>{{ item.price }}</span>
+                </p>
+                <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="{% url 'products:product' pk=item.id %}">{{ item.name }}</a></h2>
               </div>
             </div>
-            <div class="card-body pt-4 text-center">
-              <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
-                <span>$29.00</span>
-              </p>
-              <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-details.html">Bio-shroom Rejuvenating Serum</a></h2>
-            </div>
           </div>
-        </div>
-
-        <!-- Product -->
-        <div class="box">
-          <div class="card border-0 product">
-            <div class="position-relative">
-              <img class="shopping-image shopping-image-xl" src="assets/images/product/product-09.jpg" alt="Coffee Bean Caffeine Eye Cream" />
-              <div class="card-img-overlay d-flex p-3">
-                <div>
-                  <span class="badge badge-primary">-20%</span>
-                </div>
-                <div class="my-auto w-100 content-change-vertical">
-                  <a href="product-details.html" data-toggle="tooltip" data-placement="left" title="View products" class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                    <svg class="icon icon-shopping-bag-open-light fs-24">
-                      <use xlink:href="#icon-shopping-bag-open-light"></use>
-                    </svg>
-                  </a>
-                  <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view" class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
-                    <span data-toggle="modal" data-target="#quick-view">
-                      <svg class="icon icon-eye-light fs-24">
-                        <use xlink:href="#icon-eye-light"></use>
-                      </svg>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="card-body pt-4 text-center">
-              <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
-                <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$39.00</span>
-                <span>$29.00</span>
-              </p>
-              <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-details.html">Coffee Bean Caffeine Eye Cream</a></h2>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product -->
-        <div class="box">
-          <div class="card border-0 product">
-            <div class="position-relative">
-              <img class="shopping-image shopping-image-xl" src="assets/images/product/product-08.jpg" alt="Coffee Bean Caffeine Eye Cream" />
-              <div class="card-img-overlay d-flex p-3">
-                <div>
-                  <span class="badge badge-warning">New</span>
-                </div>
-                <div class="my-auto w-100 content-change-vertical">
-                  <a href="product-details.html" data-toggle="tooltip" data-placement="left" title="View products" class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
-                    <svg class="icon icon-shopping-bag-open-light fs-24">
-                      <use xlink:href="#icon-shopping-bag-open-light"></use>
-                    </svg>
-                  </a>
-                  <a href="#" data-toggle="tooltip" data-placement="left" title="Quick view" class="preview ml-auto d-md-flex align-items-center justify-content-center cursor-pointer text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2 d-none">
-                    <span data-toggle="modal" data-target="#quick-view">
-                      <svg class="icon icon-eye-light fs-24">
-                        <use xlink:href="#icon-eye-light"></use>
-                      </svg>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="card-body pt-4 text-center">
-              <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
-                <span>$29.00</span>
-              </p>
-              <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="product-details.html">Coffee Bean Caffeine Eye Cream</a></h2>
-            </div>
-          </div>
-        </div>
+          
+        {% endfor %}
       </div>
     </div>
   </section>

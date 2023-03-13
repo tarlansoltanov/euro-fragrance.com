@@ -22,5 +22,7 @@ def product(request, pk, template_name='products/product.html', context={}):
     context['settings'] = BaseSetting.objects.first()
 
     context['product'] = get_object_or_404(Product, pk=pk)
+    # Related Products
+    context['products'] = Product.objects.filter(categories__in=context['product'].categories.all()).exclude(pk=pk).distinct()
 
     return render(request, template_name, context)
