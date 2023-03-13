@@ -64,3 +64,7 @@ class Category(models.Model):
     def __str__(self):
         """Unicode representation of Category."""
         return self.name
+    
+    @property
+    def sub_categories(self):
+        return self.subcategories.all()
