@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  nginx:
+    image: nginx:1.17.1-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/nginx:/etc/nginx/conf.d/
+      - static:/var/www/static
+    networks:
+      - webnet
+  
+  web:
+    <<: &web
+      image: "server:prod"
+      build:
+        target: production_build
+      volumes:
+        - media:/var/www/media
+      command: bash ./docker/django/gunicorn/start.sh
+      environment:
+        - DJANGO_ENV=production
+      env_file:
+        - ./config/.env
+      networks:
+        - webnet
+
+
+volumes:
+  static:
+  media:
+
+
+networks:
+  webnet:
+    driver: bridge
