@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import AutoConfig
+
+config = AutoConfig(search_path='config')
+ENV = config('DJANGO_ENV', default='local')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +24,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l71x6c@vr_r3=lj^gh2fm1yeah-y=y1n3@h_#$8xn%n@a%6d^$'
+SECRET_KEY = config('DJANGO_SECRET_KEY') or 'django-insecure-+1!$%&^*()_+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (ENV != 'production')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] if DEBUG else []
+
+if not DEBUG:
+    ALLOWED_HOSTS.extend(config('DOMAIN_NAMES', cast=lambda v: [s.strip() for s in v.split(',')]) or [])
+    ALLOWED_HOSTS.extend(config('DOMAIN_IPS', cast=lambda v: [s.strip() for s in v.split(',')]) or [])
 
 
 # Application definition
@@ -78,12 +86,28 @@ WSGI_APPLICATION = 'server.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if ENV == 'local':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': config('POSTGRES_DB'),
+            'USER': config('POSTGRES_USER'),
+            'PASSWORD': config('POSTGRES_PASSWORD'),
+            'HOST': config('POSTGRES_HOST'),
+            'PORT': config('POSTGRES_PORT'),
+        }
+    }
+
+if ENV == 'production':
+    DATABASES['default']['CONN_MAX_AGE'] = 500
 
 
 # Password validation
@@ -120,15 +144,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    BASE_DIR.joinpath('static'),
 ]
 
-MEDIA_URL = 'media/'
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
 
-MEDIA_ROOT = BASE_DIR / 'media'
+STATIC_URL = '/static/'
+
+STATIC_ROOT = BASE_DIR.joinpath('staticfiles') if ENV == 'local' else '/var/www/static'
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = BASE_DIR.joinpath('media') if ENV == 'local' else '/var/www/media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
