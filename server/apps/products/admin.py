@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django import forms
 from django.forms import ValidationError
 from .models import Product, ProductImage, Category
 
@@ -6,18 +7,22 @@ from .models import Product, ProductImage, Category
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
     extra = 1
-
+    
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'categories')
+    list_display = ('name', 'price', 'category_names')
 
     inlines = [ProductImageInline]
 
-    def categories(self, obj):
+    @admin.display(description="Categories")
+    def category_names(self, obj):
         return ", ".join([c.name for c in obj.categories.all()])
-    
-    categories.short_description = "Categories"
+
+    def formfield_for_manytomany(self, db_field, request, **kwargs):
+        if db_field.name == "categories":
+            kwargs["queryset"] = Category.objects.filter(main__isnull=False)
+        return super().formfield_for_manytomany(db_field, request, **kwargs)
 
 
 @admin.register(Category)
