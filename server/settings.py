@@ -165,3 +165,11 @@ MEDIA_ROOT = BASE_DIR.joinpath('media') if ENV == 'local' else '/var/www/media'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# CSRF settings
+
+CSRF_TRUSTED_ORIGINS = []
+
+if not DEBUG:
+    CSRF_TRUSTED_ORIGINS.extend(config('DOMAIN_NAMES', cast=lambda v: [f"http://{s.strip()}" for s in v.split(',')]) or [])
+    CSRF_TRUSTED_ORIGINS.extend(config('DOMAIN_IPS', cast=lambda v: [f"http://{s.strip()}" for s in v.split(',')]) or [])
