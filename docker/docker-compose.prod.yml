@@ -5,12 +5,28 @@ services:
     image: nginx:1.17.1-alpine
     ports:
       - "80:80"
+      - "443:443"
     volumes:
-      - ./docker/nginx:/etc/nginx/conf.d/
-      - static:/var/www/static
-      - media:/var/www/media
+      - ./docker/nginx:/etc/nginx/conf.d/:ro
+      - ./docker/certbot/www/:/var/www/certbot/:ro
+      - ./docker/certbot/conf/:/etc/nginx/ssl/:ro
+      - static:/var/www/static:ro
+      - media:/var/www/media:ro
     networks:
       - webnet
+      - webcert
+    depends_on:
+      - certbot
+
+  certbot:
+    image: certbot/certbot:latest
+    # command: certonly --webroot -w /var/www/certbot --force-renewal --email {email} -d {domain} --agree-tos
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    volumes:
+      - ./docker/certbot/www/:/var/www/certbot/:rw
+      - ./docker/certbot/conf/:/etc/letsencrypt/:rw
+    networks:
+      - webcert
   
   web:
     <<: &web
@@ -35,4 +51,7 @@ volumes:
 
 networks:
   webnet:
+    driver: bridge
+  
+  webcert:
     driver: bridge
