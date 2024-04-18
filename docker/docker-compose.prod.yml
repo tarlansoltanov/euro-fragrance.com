@@ -27,7 +27,7 @@ services:
       - ./docker/certbot/conf/:/etc/letsencrypt/:rw
     networks:
       - webcert
-  
+
   web:
     <<: &web
       image: "server:prod"
@@ -52,6 +52,6 @@ volumes:
 networks:
   webnet:
     driver: bridge
-  
+
   webcert:
     driver: bridge

@@ -5,7 +5,7 @@
 
 
 {% block content %}
-  
+
 <!-- Main -->
 <main id="content">
   <!-- Breadcrumb -->
@@ -28,7 +28,7 @@
         <div class="col-md-6 pr-xl-9 mb-8 mb-md-0">
           <div class="galleries-product galleries-product-01 position-relative d-flex">
             <div class="slick-slider slider-for mx-0 pl-xl-5" data-slick-options='{"slidesToShow": 1,"vertical":true, "autoplay":false,"dots":false,"arrows":false,"asNavFor": ".slider-nav","responsive":[{"breakpoint": 1200,"settings": {"vertical": false}}]}'>
-              
+
               {% for image in product.images.all %}
                 <!-- Product Image -->
                 <div class="box px-0">
@@ -53,7 +53,7 @@
               </div>
             </div>
             <div class="slick-slider slider-nav mx-n1 mx-xl-0" data-slick-options='{"slidesToShow": 4,"vertical":true, "autoplay":false,"dots":false,"arrows":false,"asNavFor": ".slider-for","focusOnSelect": true,"responsive":[{"breakpoint": 1200,"settings": {"vertical": false}}]}'>
-              
+
               {% for image in product.images.all %}
                 <!-- Product Image -->
                 <div class="box px-1 px-xl-0 py-4 pt-xl-0">
@@ -87,9 +87,9 @@
     <div class="container">
       <h3 class="text-center fs-34 mb-8">You May Also Like</h3>
       <div class="slick-slider mx-n2" data-slick-options='{"slidesToShow": 4,"dots":false,"arrows":false,"responsive":[{"breakpoint": 1368,"settings": {"arrows":false,"dots":true}},{"breakpoint": 1200,"settings": {"slidesToShow":3,"arrows":false,"dots":true}},{"breakpoint": 992,"settings": {"slidesToShow":2,"arrows":false,"dots":true}},{"breakpoint": 768,"settings": {"slidesToShow": 2,"arrows":false,"dots":true}},{"breakpoint": 576,"settings": {"slidesToShow": 1,"arrows":false,"dots":true}}]}'>
-        
+
         {% for item in products %}
-          
+
           <!-- Product -->
           <div class="box">
             <div class="card border-0 product">
@@ -121,19 +121,19 @@
               </div>
             </div>
           </div>
-          
+
         {% endfor %}
       </div>
     </div>
   </section>
 </main>
-  
+
 {% endblock content %}
 
 
 
 {% block icons %}
-  
+
 <!-- Icons -->
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
@@ -145,7 +145,7 @@
     </symbol>
   </defs>
 </svg>
-  
+
 {% endblock icons %}
 
 
@@ -154,7 +154,7 @@
 
 
 {% for item in products %}
-  
+
 <!-- Quick View Modal -->
 <div class="modal fade quick-view" id="quick-view-{{ item.id }}" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
@@ -217,7 +217,7 @@
     </div>
   </div>
 </div>
-  
+
 {% endfor %}
-  
+
 {% endblock modals %}

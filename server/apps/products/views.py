@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import ListView, DetailView
+from django.views.generic import DetailView, ListView
 
 from server.apps.base.models import BaseSetting
 from server.apps.products.models import Category, Product
@@ -66,9 +66,7 @@ class CategoryView(ListView):
         self.category = get_object_or_404(Category, pk=self.kwargs["pk"])
 
         return (
-            Product.objects.filter(
-                categories__in=self.category.subcategories.all()
-            ).distinct()
+            Product.objects.filter(categories__in=self.category.subcategories.all()).distinct()
             if self.category.subcategories.exists()
             else Product.objects.filter(categories__in=[self.category])
         )

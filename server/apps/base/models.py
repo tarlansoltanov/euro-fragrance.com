@@ -16,8 +16,8 @@ class BaseSetting(models.Model):
     class Meta:
         """Meta definition for BaseSetting."""
 
-        verbose_name = 'BaseSetting'
-        verbose_name_plural = 'BaseSettings'
+        verbose_name = "BaseSetting"
+        verbose_name_plural = "BaseSettings"
 
     def __str__(self):
         """Unicode representation of BaseSetting."""

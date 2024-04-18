@@ -1,17 +1,16 @@
 from django.contrib import admin
-from django import forms
-from django.forms import ValidationError
-from .models import Product, ProductImage, Category
+
+from server.apps.products.models import Category, Product, ProductImage
 
 
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
     extra = 1
-    
+
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'category_names')
+    list_display = ("name", "price", "category_names")
 
     inlines = [ProductImageInline]
 
@@ -27,11 +26,11 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'main')
+    list_display = ("name", "main")
 
     def main(self, obj):
         return obj.main.name if obj.main else None
-    
+
     main.short_description = "Main"
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
