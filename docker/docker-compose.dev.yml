@@ -5,9 +5,9 @@ services:
       context: .
       dockerfile: ./docker/app/Dockerfile
     restart: unless-stopped
-    command: python -Wd manage.py runserver 0.0.0.0:8000
+    command: python -Wd manage.py runserver 0.0.0.0:7000
     ports:
-      - 8000:8000
+      - 7000:7000
     volumes:
       - .:/app
     env_file:
@@ -24,7 +24,7 @@ services:
     healthcheck:
       test: |
         /usr/bin/test $$(
-          /usr/bin/curl --fail http://localhost:8000/health/?format=json
+          /usr/bin/curl --fail http://localhost:7000/health/?format=json
           --write-out "%{http_code}" --silent --output /dev/null
         ) -eq 200
       interval: 10s
