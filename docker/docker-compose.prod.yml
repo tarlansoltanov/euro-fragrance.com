@@ -1,6 +1,7 @@
 services:
   app:
     image: euro-fragrance.com:prod
+    container_name: euro-fragrance_app_prod
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
@@ -36,6 +37,7 @@ services:
 
   backup:
     image: backup
+    container_name: euro-fragrance_backup
     build:
       context: .
       dockerfile: ./docker/backup/Dockerfile

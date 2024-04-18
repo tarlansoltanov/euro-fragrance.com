@@ -2,6 +2,7 @@ services:
   db:
     <<: &db
       image: postgres:14.2-alpine
+      container_name: euro-fragrance_db
       restart: unless-stopped
       volumes:
         - pgdata:/var/lib/postgresql/data/
@@ -13,7 +14,9 @@ services:
 volumes:
   pgdata:
     driver: local
+    name: euro-fragrance_pgdata
 
 networks:
   webdata:
     driver: bridge
+    name: euro-fragrance_webdata

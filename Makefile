@@ -106,7 +106,7 @@ test-app:
 .PHONY = docker-help build up down restart log
 
 dev = -f docker-compose.yml -f docker/docker-compose.dev.yml
-prod = -f docker-compose.yml -f docker/docker-compose.prod.yml
+prod = -f docker-compose.yml -f docker/docker-compose.prod.yml --project-name $(shell basename $(USER))
 
 ENV ?= local
 

@@ -1,6 +1,7 @@
 services:
   app:
     image: euro-fragrance.com:dev
+    container_name: euro-fragrance_app_dev
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
