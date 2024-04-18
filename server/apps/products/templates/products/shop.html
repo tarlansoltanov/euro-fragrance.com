@@ -29,7 +29,7 @@
   <section class="mt-7">
     <div class="container container-xl">
       <div class="row">
-        {% for item in page %}
+        {% for item in products %}
           <!-- Product small -->
           <div class="{% if forloop.counter0 < 4 or forloop.counter0 > 6 %}col-xl-3{% endif %} col-lg-4 col-md-6 mb-6 mb-lg-7">
             <div class="card border-0 product" data-animate="fadeInUp">
@@ -72,25 +72,27 @@
     <nav>
       <ul class="pagination justify-content-center align-items-center mb-0 fs-16 font-weight-600">
         
-        {% if page.has_previous %}
+        {% if page_obj.has_previous %}
           <li class="page-item fs-18 d-none d-sm-block">
-            <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="{% url 'products:shop' %}?page={{ page.previous_page_number }}" tabindex="-1"><i class="far fa-angle-double-left"></i></a>
+            <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="{% url 'products:shop' %}?page={{ page_obj.previous_page_number }}" tabindex="-1"><i class="far fa-angle-double-left"></i></a>
           </li>
         {% endif %}
-        {% for page_number in page.adjusted_elided_pages %}
-          {% if page_number == page.paginator.ELLIPSIS %}
+
+        {% for page_number in page_obj.paginator.get_elided_page_range %}
+          {% if page_number == page_obj.paginator.ELLIPSIS %}
             <li class="page-item disabled">
               <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex">...</a>
             </li>
           {% else %}
-            <li class="page-item {% if page_number == page.number %}active" aria-current="page"{% else %}"{% endif %}>
+            <li class="page-item {% if page_number == page_obj.number %}active" aria-current="page"{% else %}"{% endif %}>
               <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="{% url 'products:shop' %}?page={{ page_number }}">{{ page_number }}</a>
             </li>
           {% endif %}
         {% endfor %}
-        {% if page.has_next %}
+        
+        {% if page_obj.has_next %}
           <li class="page-item fs-18 d-none d-sm-block">
-            <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="{% url 'products:shop' %}?page={{ page.next_page_number }}"><i class="far fa-angle-double-right"></i></a>
+            <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="{% url 'products:shop' %}?page={{ page_obj.next_page_number }}"><i class="far fa-angle-double-right"></i></a>
           </li>
         {% endif %}
       </ul>

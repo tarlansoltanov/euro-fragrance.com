@@ -1,9 +1,10 @@
 [tool.poetry]
-name = "eurofragrance"
+name = "euro-fragrance.com"
 version = "0.1.0"
-description = "Euro Fragrance Webiste"
+description = ""
 authors = ["Tarlan Soltanov <tarlansoltanov@outlook.com>"]
 readme = "README.md"
+packages = [{ include = "server" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"

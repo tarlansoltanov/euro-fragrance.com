@@ -1,25 +1,49 @@
-from django.shortcuts import render
-from .models import BaseSetting
-from ..products.models import Category
+from django.views.generic import TemplateView
+
+from server.apps.base.models import BaseSetting
+from server.apps.products.models import Category
 
 
-def home(request, template_name='base/index.html', context={}):
-    context['title'] = 'Home'
-    context['settings'] = BaseSetting.objects.first()
-    context['categories'] = Category.objects.filter(main=None)
+class HomeView(TemplateView):
+    """Home view."""
 
-    return render(request, template_name, context)
+    template_name = "base/index.html"
 
-def about(request, template_name='base/about.html', context={}):
-    context['title'] = 'About'
-    context['settings'] = BaseSetting.objects.first()
-    context['categories'] = Category.objects.filter(main=None)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-    return render(request, template_name, context)
+        context["title"] = "Home"
+        context["settings"] = BaseSetting.objects.first()
+        context["categories"] = Category.objects.filter(main=None)
 
-def contact(request, template_name='base/contact.html', context={}):
-    context['title'] = 'Contact'
-    context['settings'] = BaseSetting.objects.first()
-    context['categories'] = Category.objects.filter(main=None)
+        return context
 
-    return render(request, template_name, context)
+
+class AboutView(TemplateView):
+    """About view."""
+
+    template_name = "base/about.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["title"] = "About"
+        context["settings"] = BaseSetting.objects.first()
+        context["categories"] = Category.objects.filter(main=None)
+
+        return context
+
+
+class ContactView(TemplateView):
+    """Contact view."""
+
+    template_name = "base/contact.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["title"] = "Contact"
+        context["settings"] = BaseSetting.objects.first()
+        context["categories"] = Category.objects.filter(main=None)
+
+        return context

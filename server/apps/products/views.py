@@ -1,46 +1,83 @@
-from django.shortcuts import render, get_object_or_404
-from django.core.paginator import Paginator
-from .models import Product, Category
-from ..base.models import BaseSetting
+from django.shortcuts import get_object_or_404
+from django.views.generic import ListView, DetailView
+
+from server.apps.base.models import BaseSetting
+from server.apps.products.models import Category, Product
 
 
-def shop(request, template_name='products/shop.html', context={}):
-    context['title'] = 'Shop'
-    context['settings'] = BaseSetting.objects.first()
-    context['categories'] = Category.objects.filter(main=None)
+class ShopView(ListView):
+    """Shop Product List view."""
 
-    page = request.GET.get('page', 1)
-    products = Product.objects.all()
-    paginator = Paginator(products, 11)
+    model = Product
+    queryset = Product.objects.all()
+    context_object_name = "products"
 
-    context['page'] = paginator.get_page(page)
-    context['page'].adjusted_elided_pages = paginator.get_elided_page_range(page)
+    template_name = "products/shop.html"
+    paginate_by = 11
 
-    return render(request, template_name, context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-def product(request, pk, template_name='products/product.html', context={}):
-    context['title'] = 'Product'
-    context['settings'] = BaseSetting.objects.first()
-    context['categories'] = Category.objects.filter(main=None)
+        context["title"] = "Shop"
+        context["settings"] = BaseSetting.objects.first()
+        context["categories"] = Category.objects.filter(main=None)
 
-    context['product'] = get_object_or_404(Product, pk=pk)
-    # Related Products
-    context['products'] = Product.objects.filter(categories__in=context['product'].categories.all()).exclude(pk=pk).distinct()
+        return context
 
-    return render(request, template_name, context)
 
-def category(request, pk, template_name='products/shop.html', context={}):
-    category = get_object_or_404(Category, pk=pk)
+class ProductView(DetailView):
+    """Product view."""
 
-    context['title'] = category.name
-    context['settings'] = BaseSetting.objects.first()
-    context['categories'] = Category.objects.filter(main=None)
+    model = Product
+    queryset = Product.objects.all()
 
-    page = request.GET.get('page', 1)
-    products = Product.objects.filter(categories__in=category.subcategories.all()).distinct() if category.subcategories.exists() else Product.objects.filter(categories__in=[category])
-    paginator = Paginator(products, 11)
+    context_object_name = "product"
 
-    context['page'] = paginator.get_page(page)
-    context['page'].adjusted_elided_pages = paginator.get_elided_page_range(page)
+    template_name = "products/product.html"
 
-    return render(request, template_name, context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["title"] = "Product"
+        context["settings"] = BaseSetting.objects.first()
+        context["categories"] = Category.objects.filter(main=None)
+
+        # Related Products
+        context["products"] = (
+            Product.objects.filter(categories__in=context["product"].categories.all())
+            .exclude(pk=context["product"].pk)
+            .distinct()
+        )
+
+        return context
+
+
+class CategoryView(ListView):
+    """Category Product List view."""
+
+    model = Product
+
+    context_object_name = "products"
+
+    template_name = "products/shop.html"
+
+    def get_queryset(self):
+        """Get Products by Category."""
+        self.category = get_object_or_404(Category, pk=self.kwargs["pk"])
+
+        return (
+            Product.objects.filter(
+                categories__in=self.category.subcategories.all()
+            ).distinct()
+            if self.category.subcategories.exists()
+            else Product.objects.filter(categories__in=[self.category])
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["title"] = self.category.name
+        context["settings"] = BaseSetting.objects.first()
+        context["categories"] = Category.objects.filter(main=None)
+
+        return context
