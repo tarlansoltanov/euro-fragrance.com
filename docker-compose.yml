@@ -1,42 +1,19 @@
-version: "3"
-
 services:
   db:
-    image: "postgres"
-    restart: always
-    volumes:
-      - pgdata:/var/lib/postgresql/data/
-    ports:
-      - 5432:5432
-    env_file:
-      - ./config/.env
-    networks:
-      - webdata
+    <<: &db
+      image: postgres:14.2-alpine
+      restart: unless-stopped
+      volumes:
+        - pgdata:/var/lib/postgresql/data/
+      env_file:
+        - ./config/.env
+      networks:
+        - webdata
 
-  web:
-    image: "server:dev"
-    build:
-      target: development_build
-      context: .
-      dockerfile: ./docker/django/Dockerfile
-    restart: always
-    command: python -Wd manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/usr/src/app
-      - static:/var/www/static
-    environment:
-      - DJANGO_ENV=development
-    ports:
-      - 8000:8000
-    depends_on:
-      - db
-    networks:
-      - webdata
+volumes:
+  pgdata:
+    driver: local
 
 networks:
   webdata:
     driver: bridge
-
-volumes:
-  static:
-  pgdata:

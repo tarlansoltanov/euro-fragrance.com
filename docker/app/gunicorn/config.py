@@ -10,6 +10,6 @@ workers = multiprocessing.cpu_count() * 2 + 1
 max_requests = 2000
 max_requests_jitter = 400
 
-log_file = "/var/log/gunicorn/gunicorn.log"
-chdir = "/usr/src/app"
+log_file = "./logs/gunicorn.log"
+chdir = "/app"
 worker_tmp_dir = "/dev/shm"
