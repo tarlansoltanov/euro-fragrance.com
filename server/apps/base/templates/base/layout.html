@@ -65,12 +65,12 @@
 
                     <!-- Shop -->
                     <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-pages py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                      <a class="nav-link p-0" href="{% url 'products:shop' %}"> Shop </a>
+                      <a class="nav-link p-0" href="{% url 'product:list' %}"> Shop </a>
                     </li>
 
                     <!-- Categories -->
                     <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-shop dropdown py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                      <a class="nav-link dropdown-toggle p-0" href="{% url 'products:shop' %}" data-toggle="dropdown">
+                      <a class="nav-link dropdown-toggle p-0" href="{% url 'product:list' %}" data-toggle="dropdown">
                         Categories
                         <span class="caret"></span>
                       </a>
@@ -80,11 +80,11 @@
 
                             {% for main in categories %}
                               <div class="col-xl-2 col-sm-6 mb-md-5">
-                                <h4 class="dropdown-header text-secondary fs-18 mb-1 lh-1"><a href="{% url 'products:category' pk=main.id %}">{{ main.name }}</a></h4>
+                                <h4 class="dropdown-header text-secondary fs-18 mb-1 lh-1"><a href="{% url 'category:detail' pk=main.id %}">{{ main.name }}</a></h4>
 
-                                {% for item in main.subcategories.all %}
+                                {% for item in main.children.all %}
                                   <div class="dropdown-item">
-                                    <a class="dropdown-link" href="{% url 'products:category' pk=item.id %}"> {{ item.name }} </a>
+                                    <a class="dropdown-link" href="{% url 'category:detail' pk=item.id %}"> {{ item.name }} </a>
                                   </div>
                                 {% endfor %}
                               </div>
@@ -169,7 +169,7 @@
               </li>
 
               <li class="py-1">
-                <a href="{% url 'products:shop' %}" class="text-body lh-175">Shopping</a>
+                <a href="{% url 'product:list' %}" class="text-body lh-175">Shopping</a>
               </li>
             </ul>
           </div>
@@ -195,7 +195,7 @@
             </div>
             <div class="col-12 col-lg-4 text-md-center order-1 order-lg-2">
               <div class="d-flex flex-column mt-5">
-                <p class="lh-2">© CodeShift</p>
+                <p class="lh-2">© <a href="https://www.codeshift.az" target="_blank">CodeShift</a></p>
                 <ul class="list-inline fs-18 ml-3 mb-0">
                   <li class="list-inline-item mr-4">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -253,23 +253,23 @@
 
             <!-- Shop -->
             <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown-item-pages py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-              <a class="nav-link p-0" href="{% url 'products:shop' %}"> Shop </a>
+              <a class="nav-link p-0" href="{% url 'product:list' %}"> Shop </a>
             </li>
 
             <!-- Categories -->
             <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
-              <a class="nav-link dropdown-toggle p-0" href="{% url 'products:shop' %}" data-toggle="dropdown">
+              <a class="nav-link dropdown-toggle p-0" href="{% url 'product:list' %}" data-toggle="dropdown">
                 Categories
                 <span class="caret"></span>
               </a>
               <div class="dropdown-menu p-0 dropdown-menu-listing x-animated x-fadeInUp">
 
                 {% for main in categories %}
-                  <h4 class="dropdown-header text-secondary fs-16 my-3"><a href="{% url 'products:category' pk=main.id %}">{{ main.name }}</a></h4>
+                  <h4 class="dropdown-header text-secondary fs-16 my-3"><a href="{% url 'category:detail' pk=main.id %}">{{ main.name }}</a></h4>
 
-                  {% for item in main.subcategories.all %}
+                  {% for item in main.children.all %}
                     <div class="dropdown-item">
-                      <a class="dropdown-link" href="{% url 'products:category' pk=item.id %}"> {{ item.name }} </a>
+                      <a class="dropdown-link" href="{% url 'category:detail' pk=item.id %}"> {{ item.name }} </a>
                     </div>
                   {% endfor %}
 
@@ -299,7 +299,7 @@
             </li>
           </ul>
           <p class="mb-0 text-gray">
-            © {% now "Y" %} CodeShift.<br />
+            © {% now "Y" %} <a href="https://www.codeshift.az" target="_blank">CodeShift</a><br />
             All rights reserved.
           </p>
         </div>

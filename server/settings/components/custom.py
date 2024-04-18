@@ -1,13 +1,22 @@
 # Custom Project Settings
 
 from server.settings.components import BASE_DIR
-from server.settings.components.common import INSTALLED_APPS
+from server.settings.components.common import INSTALLED_APPS, TEMPLATES
 
 # Application definition
 
 INSTALLED_APPS += [
     "server.apps.base",
-    "server.apps.products",
+    "server.apps.category",
+    "server.apps.product",
+]
+
+# Context processors
+# https://docs.djangoproject.com/en/5.0/ref/templates/api/#writing-your-own-context-processors
+
+TEMPLATES[0]["OPTIONS"]["context_processors"] += [
+    "server.apps.base.logic.processors.settings",
+    "server.apps.category.logic.processors.categories",
 ]
 
 # Static and media files (CSS, JavaScript, Images)

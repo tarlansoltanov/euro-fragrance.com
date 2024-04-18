@@ -18,13 +18,11 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 
-from server.apps.base import urls as base_urls
-from server.apps.products import urls as products_urls
-
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include(base_urls, namespace="base")),
-    path("shop/", include(products_urls, namespace="products")),
+    path("", include("server.apps.base.urls", namespace="base")),
+    path("shop/", include("server.apps.product.urls", namespace="product")),
+    path("category/", include("server.apps.category.urls", namespace="category")),
 ]
 
 

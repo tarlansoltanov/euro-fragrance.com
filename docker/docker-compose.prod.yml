@@ -1,6 +1,6 @@
 services:
   app:
-    image: codeshift.az:prod
+    image: euro-fragrance.com:prod
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
