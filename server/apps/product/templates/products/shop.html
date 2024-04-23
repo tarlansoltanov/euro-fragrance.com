@@ -64,8 +64,10 @@
               <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
                 <span>${{ item.price }}</span>
               </p>
-              <h2 class="card-title fs-15 font-weight-500 mb-2"><a href="{% url 'product:detail' pk=item.id %}">{{
-                  item.name }}</a></h2>
+
+              <h2 class="card-title fs-15 font-weight-500 mb-2">
+                <a href="{% url 'product:detail' pk=item.id %}">{{ item.name }}</a>
+              </h2>
             </div>
           </div>
         </div>
